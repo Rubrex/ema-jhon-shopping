@@ -7,7 +7,6 @@ import "./Cart.css";
 import { deleteShoppingCart } from "../../utilities/fakedb";
 const Cart = (props) => {
   const { cart, setCart } = props;
-  console.log(setCart);
   // Tax and Total Calculations
   let total = 0;
   let shipping = 0;
