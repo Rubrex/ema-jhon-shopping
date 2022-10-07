@@ -7,7 +7,7 @@ import ReviewItem from "../ReviewItem/ReviewItem";
 import "./Orders.css";
 
 const Orders = () => {
-  const { products, initialCart } = useLoaderData();
+  const { initialCart } = useLoaderData();
   const [cart, setCart] = useState(initialCart);
 
   // Remove Cart Button Handler
