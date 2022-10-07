@@ -1,0 +1,47 @@
+.cart {
+  position: sticky;
+  top: 0;
+}
+.cart > h3 {
+  text-align: center;
+  padding: 2rem 0;
+}
+.cart-info {
+  margin-left: 10px;
+}
+.cart-info > p {
+  padding: 5px 0;
+}
+
+.btn-group {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.clear-btn,
+.review-btn {
+  color: white;
+  border-radius: 5px;
+  padding: 10px 0;
+  font-size: 18px;
+  border: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clear-btn {
+  background-color: #ff3030;
+}
+.clear-btn:hover {
+  background-color: #f11313;
+}
+.review-btn {
+  background-color: #ff9900;
+}
+.review-btn:hover {
+  background-color: #ffae35;
+}

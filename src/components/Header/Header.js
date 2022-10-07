@@ -1,0 +1,22 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../images/Logo.svg";
+import "./Header.css";
+const Header = () => {
+  return (
+    <nav>
+      <div className="header-wrapper">
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
+        <div className="header-navs">
+          <Link to="/orders">Order</Link>
+          <Link to="/inventory">Inventory</Link>
+          <Link to="/login">Login</Link>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Header;
