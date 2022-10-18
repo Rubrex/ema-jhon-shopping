@@ -1,0 +1,108 @@
+.form-container {
+  max-width: 500px;
+  border: 1px solid #95a0a7;
+  border-radius: 8px;
+  padding: 42px;
+  margin: 40px auto;
+}
+.form-container > h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  margin: 15px 0;
+}
+
+.form-control > label {
+  display: block;
+  position: relative;
+  left: 5px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 17px;
+}
+.form-control > input {
+  padding: 10px 20px;
+  width: 100%;
+  border: 1px solid #95a0a7;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.login-btn {
+  margin-top: 30px;
+  height: 55px;
+  width: 100%;
+  background: rgba(255, 153, 0, 0.3);
+  border-radius: 5px;
+  border: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+.login-btn:hover {
+  background: rgba(255, 153, 0, 0.6);
+}
+.new-to-ema-jhon {
+  font-weight: 400;
+  font-size: 16px;
+  color: #2a414f;
+  text-align: center;
+  margin-top: 10px;
+}
+.new-to-ema-jhon a {
+  color: #ff9900;
+  text-decoration: none;
+}
+
+.hr-divider {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: 0.5;
+  margin: 15px 0;
+}
+.hr-divider:before {
+  content: "";
+  background: linear-gradient(to right, transparent, #818078, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+.hr-divider:after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: black;
+  padding: 0 0.5em;
+  line-height: 1.5em;
+  color: #818078;
+  background-color: #fcfcfa;
+}
+.other-sign-in {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #95a0a7;
+  border-radius: 5px;
+  padding: 12px 0;
+  background-color: #fff;
+  cursor: pointer;
+}
+.other-sign-in:hover {
+  background-color: rgb(255, 249, 239);
+}
+.other-sign-in > p {
+  font-weight: 400;
+  font-size: 17px;
+  margin-left: 8px;
+  color: #2a414f;
+}

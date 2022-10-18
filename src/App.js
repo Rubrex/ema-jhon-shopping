@@ -1,9 +1,11 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Inventory from "./components/Inventory/Inventory";
+import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound/NotFound";
 import Orders from "./components/Orders/Orders";
 import Shop from "./components/Shop/Shop";
+import SignUp from "./components/SignUp/SignUp";
 import Main from "./layout/Main";
 import { productsAndCartLoader } from "./loaders/productsAndCartLoader";
 
@@ -26,6 +28,8 @@ const router = createBrowserRouter([
         loader: productsAndCartLoader,
       },
       { path: "inventory", element: <Inventory /> },
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <SignUp /> },
     ],
   },
 ]);

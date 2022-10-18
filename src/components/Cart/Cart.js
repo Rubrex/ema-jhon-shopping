@@ -8,7 +8,7 @@ import { deleteShoppingCart } from "../../utilities/fakedb";
 import { Link } from "react-router-dom";
 const Cart = (props) => {
   const { cart, setCart } = props;
-  console.log(cart);
+  // console.log(cart);
   // Tax and Total Calculations
   let total = 0;
   let shipping = 0;
