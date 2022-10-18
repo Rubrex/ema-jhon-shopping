@@ -1,20 +1,27 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 import "./SignUp.css";
 
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
   // states
   const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
     setError(null);
     event.preventDefault();
+
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+
+    // Reset Form Inputs as soon as button is clicked
+    form.reset();
 
     if (password.length < 6) {
       setError("Password must be at least 6 characters");
@@ -25,6 +32,16 @@ const SignUp = () => {
       setError("Password did not match");
       return;
     }
+
+    // Create a new user using firebase authentication
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
