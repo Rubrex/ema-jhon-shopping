@@ -4,10 +4,16 @@ import "./Login.css";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
+  const handleSubmit = (event) => {
+    const form = event.target;
+    const email = form.email;
+    const password = form.password;
+  };
+
   return (
     <div className="form-container">
       <h2>Login</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="email">Email</label>
           <input

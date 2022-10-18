@@ -1,13 +1,36 @@
 import React from "react";
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 const SignUp = () => {
+  // states
+  const [error, setError] = useState(null);
+
+  const handleSubmit = (event) => {
+    setError(null);
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Password did not match");
+      return;
+    }
+  };
+
   return (
     <div className="form-container">
       <h2>Sign up</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="email">Email</label>
           <input
@@ -29,15 +52,16 @@ const SignUp = () => {
           />
         </div>
         <div className="form-control">
-          <label htmlFor="confirm-password">Confirm Password</label>
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
-            id="confirm-password"
-            name="confirm-password"
+            id="confirmPassword"
+            name="confirmPassword"
             placeholder="Password"
             required
           />
         </div>
+        <span className="form-error">{error}</span>
         <button className="login-btn">Signup</button>
         <div className="new-to-ema-jhon">
           Already have an Account? <Link to="/login">Login</Link>
