@@ -33,6 +33,9 @@
   align-items: center;
   justify-content: center;
 }
+.review-btn {
+  text-decoration: none;
+}
 .clear-btn {
   background-color: #ff3030;
 }

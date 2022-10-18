@@ -5,15 +5,17 @@ import Swal from "sweetalert2";
 import React from "react";
 import "./Cart.css";
 import { deleteShoppingCart } from "../../utilities/fakedb";
+import { Link } from "react-router-dom";
 const Cart = (props) => {
   const { cart, setCart } = props;
+  console.log(cart);
   // Tax and Total Calculations
   let total = 0;
   let shipping = 0;
   let quantity = 0;
   for (const product of cart) {
     quantity = quantity + product.quantity;
-    total = total + product.price * quantity;
+    total = total + product.price * product.quantity;
     shipping = shipping + product.shipping;
   }
   let tax = parseFloat((total * 0.1).toFixed(2));
@@ -24,10 +26,10 @@ const Cart = (props) => {
     deleteShoppingCart();
     setCart([]);
     Swal.fire({
-      title: "Error!",
-      text: "Do you want to continue",
+      title: "Cleared",
+      text: "Your cart has been cleared",
       icon: "success",
-      confirmButtonText: "Cool",
+      confirmButtonText: "Done",
     });
   };
   return (
@@ -49,14 +51,14 @@ const Cart = (props) => {
             style={{ color: "white", marginLeft: "5px" }}
           />
         </button>
-        <button className="review-btn">
+        <Link to="/orders" className="review-btn">
           Review Order
           <FontAwesomeIcon
             icon={faArrowRight}
             beatFade
             style={{ color: "white", marginLeft: "5px" }}
           />
-        </button>
+        </Link>
       </div>
     </div>
   );
