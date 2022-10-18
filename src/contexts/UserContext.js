@@ -4,15 +4,17 @@ import { getAuth } from "firebase/auth";
 import app from "../firebase/firease.config";
 import { useState } from "react";
 
+export const AuthContext = createContext();
+
 const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
   // states
   const [user, setUser] = useState(null);
 
-  const AuthContext = createContext();
+  const myUser = { displayName: "Arafat Alom" };
 
-  const authInfo = {};
+  const authInfo = { myUser };
 
   return (
     <div>
