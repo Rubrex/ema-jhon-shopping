@@ -1,5 +1,7 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { addToDb, getStoredCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
@@ -61,7 +63,26 @@ const Shop = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart} setCart={setCart} />
+        <Cart cart={cart} setCart={setCart}>
+          <div className="btn-group">
+            {/* <button className="clear-btn" onClick={clearCart}>
+              Clear Cart
+              <FontAwesomeIcon
+                icon={faTrash}
+                shake
+                style={{ color: "white", marginLeft: "5px" }}
+              />
+            </button> */}
+            <Link to="/orders" className="review-btn">
+              Review Order
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                beatFade
+                style={{ color: "white", marginLeft: "5px" }}
+              />
+            </Link>
+          </div>
+        </Cart>
       </div>
     </div>
   );

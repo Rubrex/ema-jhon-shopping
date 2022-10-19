@@ -1,7 +1,10 @@
+import { faShippingFast, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
-import { removeFromDb } from "../../utilities/fakedb";
+import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import ReviewItem from "../ReviewItem/ReviewItem";
 import "./Orders.css";
@@ -16,6 +19,19 @@ const Orders = () => {
     setCart(remainingCart);
     removeFromDb(id);
   };
+
+  // Clear Shopping Cart Handler
+  const clearCart = () => {
+    deleteShoppingCart();
+    setCart([]);
+    Swal.fire({
+      title: "Cleared",
+      text: "Your cart has been cleared",
+      icon: "success",
+      confirmButtonText: "Done",
+    });
+  };
+
   return (
     <div className="shop-container container">
       <div className="orders-container">
@@ -30,7 +46,26 @@ const Orders = () => {
         })}
       </div>
       <div className="cart-container">
-        <Cart cart={cart} setCart={setCart} />
+        <Cart cart={cart} setCart={setCart}>
+          <div className="btn-group">
+            <button className="clear-btn" onClick={clearCart}>
+              Clear Cart
+              <FontAwesomeIcon
+                icon={faTrash}
+                shake
+                style={{ color: "white", marginLeft: "5px" }}
+              />
+            </button>
+            <Link to="/shipping" className="review-btn">
+              Proceed Shipping
+              <FontAwesomeIcon
+                icon={faShippingFast}
+                beatFade
+                style={{ color: "white", marginLeft: "5px" }}
+              />
+            </Link>
+          </div>
+        </Cart>
       </div>
     </div>
   );
