@@ -20,6 +20,8 @@ const UserContext = ({ children }) => {
   // states
   const [user, setUser] = useState();
 
+  const [loading, setLoading] = useState(true);
+
   // Register user
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -40,6 +42,7 @@ const UserContext = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       toast.info(`authStateChanged inside useEffect`);
       setUser(currentUser);
+      setLoading(false);
     });
 
     // SideEffect Cleanup
@@ -48,7 +51,7 @@ const UserContext = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { user, createUser, signIn, logOut };
+  const authInfo = { user, loading, createUser, signIn, logOut };
 
   return (
     <div>
