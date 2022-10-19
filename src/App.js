@@ -9,6 +9,7 @@ import Shop from "./components/Shop/Shop";
 import SignUp from "./components/SignUp/SignUp";
 import Main from "./layout/Main";
 import { productsAndCartLoader } from "./loaders/productsAndCartLoader";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,14 @@ const router = createBrowserRouter([
         loader: productsAndCartLoader,
       },
       { path: "inventory", element: <Inventory /> },
-      { path: "shipping", element: <Shipping /> },
+      {
+        path: "shipping",
+        element: (
+          <PrivateRoute>
+            <Shipping />
+          </PrivateRoute>
+        ),
+      },
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
     ],

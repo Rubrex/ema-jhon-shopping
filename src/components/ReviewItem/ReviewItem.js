@@ -4,7 +4,6 @@ import React from "react";
 import "./ReviewItems.css";
 const ReviewItem = ({ product, handleRemoveItem }) => {
   const { id, img, name, price, quantity, shipping } = product;
-  console.log(product);
   return (
     <div className="review-item-container">
       <div className="review-thumbnail">

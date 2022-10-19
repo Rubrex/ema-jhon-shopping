@@ -6,7 +6,6 @@ import logo from "../../images/Logo.svg";
 import "./Header.css";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-
   // Sign out handler
   const handleLogout = () => {
     logOut();

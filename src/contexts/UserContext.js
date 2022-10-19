@@ -39,7 +39,6 @@ const UserContext = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       toast.info(`authStateChanged inside useEffect`);
-      console.log(currentUser);
       setUser(currentUser);
     });
 
