@@ -1,13 +1,13 @@
 .form-container {
-  max-width: 500px;
+  max-width: 450px;
   border: 1px solid #95a0a7;
   border-radius: 8px;
-  padding: 42px;
+  padding: 20px 42px;
   margin: 40px auto;
 }
 .form-container > h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .form-control {
@@ -40,6 +40,7 @@
   border: transparent;
   font-size: 20px;
   cursor: pointer;
+  text-align: center;
 }
 .login-btn:hover {
   background: rgba(255, 153, 0, 0.6);

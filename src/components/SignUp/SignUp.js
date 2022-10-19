@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
 import "./SignUp.css";
 
@@ -20,9 +21,6 @@ const SignUp = () => {
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
 
-    // Reset Form Inputs as soon as button is clicked
-    form.reset();
-
     if (password.length < 6) {
       setError("Password must be at least 6 characters");
       return;
@@ -37,6 +35,11 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        // Reset Form Inputs as soon as registration is complete
+        form.reset();
+
+        toast.success("Registration complete");
+
         console.log(user);
       })
       .catch((error) => {

@@ -1,13 +1,31 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
+    event.preventDefault();
     const form = event.target;
-    const email = form.email;
-    const password = form.password;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // sign in using firebase authentication
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        form.reset();
+        toast.success("User Signed in successfully!");
+        console.log(user);
+      })
+      .catch((err) => {
+        toast.warning("Something went wrong, unable to login", err);
+        console.log(err);
+      });
   };
 
   return (
@@ -18,8 +36,8 @@ const Login = () => {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            id="email"
             name="email"
+            id="email"
             placeholder="Email"
             required
           />
@@ -28,22 +46,22 @@ const Login = () => {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            id="password"
             name="password"
-            placeholder="Password"
             required
+            id="password"
+            placeholder="******"
           />
         </div>
-        <button className="login-btn">Login</button>
-        <div className="new-to-ema-jhon">
-          New to Ema-Jhon? <Link to="/signup">Create New Account</Link>
-        </div>
-        <hr className="hr-divider" data-content="OR" />
-        <button className="other-sign-in">
-          <FcGoogle style={{ fontSize: "32px" }} />
-          <p>Continue with Google</p>
-        </button>
+        <input className="login-btn" type="submit" value="Login" />
       </form>
+      <div className="new-to-ema-jhon">
+        New to Ema-Jhon? <Link to="/signup">Create New Account</Link>
+      </div>
+      <hr className="hr-divider" data-content="OR" />
+      <button className="other-sign-in">
+        <FcGoogle style={{ fontSize: "32px" }} />
+        <p>Continue with Google</p>
+      </button>
     </div>
   );
 };

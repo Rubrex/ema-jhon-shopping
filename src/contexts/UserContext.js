@@ -1,24 +1,30 @@
 import React from "react";
 import { createContext } from "react";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import app from "../firebase/firease.config";
 import { useState } from "react";
 
 export const AuthContext = createContext();
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
   // states
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ displayName: "Arafat Alom" });
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const myUser = { displayName: "Arafat Alom" };
+  const signIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-  const authInfo = { myUser, createUser };
+  const authInfo = { user, createUser, signIn };
 
   return (
     <div>

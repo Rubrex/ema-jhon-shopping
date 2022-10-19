@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/UserContext";
 import logo from "../../images/Logo.svg";
 import "./Header.css";
 const Header = () => {
-  const { myUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <nav>
       <div className="header-wrapper">
@@ -25,7 +25,7 @@ const Header = () => {
               padding: "10px",
             }}
           >
-            {myUser?.displayName}
+            {user?.displayName}
           </span>
         </div>
       </div>
