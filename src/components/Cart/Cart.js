@@ -1,13 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Swal from "sweetalert2";
-
 import React from "react";
 import "./Cart.css";
-import { deleteShoppingCart } from "../../utilities/fakedb";
-import { Link } from "react-router-dom";
 const Cart = (props) => {
-  const { cart, setCart, children } = props;
+  const { cart, children } = props;
   // console.log(cart);
   // Tax and Total Calculations
   let total = 0;
