@@ -22,9 +22,9 @@ const Login = () => {
         toast.success("User Signed in successfully!");
         console.log(user);
       })
-      .catch((err) => {
-        toast.warning("Something went wrong, unable to login", err);
-        console.log(err);
+      .catch((error) => {
+        toast.warning(`Unable to login: ${error.code}`);
+        console.log(error);
       });
   };
 
