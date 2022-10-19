@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
@@ -9,7 +9,13 @@ import { AuthContext } from "../../contexts/UserContext";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
 
+  const location = useLocation();
+
   const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
+
+  console.log(from);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,7 +29,7 @@ const Login = () => {
         const user = result.user;
         form.reset();
         toast.success("User Signed in successfully!");
-        navigate("/");
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => {
