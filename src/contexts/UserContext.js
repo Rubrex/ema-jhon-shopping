@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import app from "../firebase/firease.config";
 import { useState } from "react";
@@ -16,15 +17,22 @@ const UserContext = ({ children }) => {
   // states
   const [user, setUser] = useState({ displayName: "Arafat Alom" });
 
+  // Register user
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  // Sign in
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const authInfo = { user, createUser, signIn };
+  // Sign out
+  const logOut = () => {
+    return signOut(auth);
+  };
+
+  const authInfo = { user, createUser, signIn, logOut };
 
   return (
     <div>
