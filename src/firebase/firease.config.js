@@ -12,17 +12,8 @@ const firebaseConfig = {
   messagingSenderId: "817692541139",
   appId: "1:817692541139:web:d1eb36630d1f9c63631426",
 };
-// Another config
-const firebaseConfig1 = {
-  apiKey: "AIzaSyDcUviD2-XlLz1QPD7xzGOmLCtFOwywww8",
-  authDomain: "fir-auth-21c73.firebaseapp.com",
-  projectId: "fir-auth-21c73",
-  storageBucket: "fir-auth-21c73.appspot.com",
-  messagingSenderId: "361083750151",
-  appId: "1:361083750151:web:231c610f922734053de7a2",
-};
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig1);
+const app = initializeApp(firebaseConfig);
 
 export default app;
