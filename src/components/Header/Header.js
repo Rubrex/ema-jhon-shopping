@@ -25,7 +25,7 @@ const Header = () => {
               padding: "10px",
             }}
           >
-            {user?.displayName}
+            {user?.email}
           </span>
         </div>
       </div>
