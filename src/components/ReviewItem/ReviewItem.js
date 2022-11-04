@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./ReviewItems.css";
 const ReviewItem = ({ product, handleRemoveItem }) => {
-  const { id, img, name, price, quantity, shipping } = product;
+  const { _id, img, name, price, quantity, shipping } = product;
   return (
     <div className="review-item-container">
       <div className="review-thumbnail">
@@ -22,7 +22,7 @@ const ReviewItem = ({ product, handleRemoveItem }) => {
             Quantity: <small>{quantity}</small>
           </div>
         </div>
-        <button className="delete-btn" onClick={() => handleRemoveItem(id)}>
+        <button className="delete-btn" onClick={() => handleRemoveItem(_id)}>
           <FontAwesomeIcon
             className="delete-icon"
             icon={faTrashCan}

@@ -40,7 +40,7 @@ const Orders = () => {
             <ReviewItem
               key={product._id}
               product={product}
-              handleRemoveItem={() => handleRemoveItem(product._id)}
+              handleRemoveItem={handleRemoveItem}
             ></ReviewItem>
           );
         })}
