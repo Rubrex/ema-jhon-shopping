@@ -25,7 +25,7 @@ const Shop = () => {
     const savedCart = [];
     // Looping through id from products and updating quantity from localStorage  to cart object
     for (const id in storedCart) {
-      const addedProduct = products.find((product) => product.id === id);
+      const addedProduct = products.find((product) => product._id === id);
       if (addedProduct) {
         const quantity = storedCart[id];
         addedProduct.quantity = quantity;
@@ -37,26 +37,29 @@ const Shop = () => {
 
   // event Handlers
   const addToCardHandler = (selectedProduct) => {
+    console.log(selectedProduct);
     let newCart = [];
-    const exists = cart.find((product) => product.id === selectedProduct.id);
+    const exists = cart.find((product) => product._id === selectedProduct._id);
     if (!exists) {
       selectedProduct.quantity = 1;
       newCart = [...cart, selectedProduct];
     } else {
-      const rest = cart.filter((product) => product.id !== selectedProduct.id);
+      const rest = cart.filter(
+        (product) => product._id !== selectedProduct._id
+      );
       exists.quantity = exists.quantity + 1;
       newCart = [...rest, exists];
     }
 
     setCart(newCart);
-    addToDb(selectedProduct.id);
+    addToDb(selectedProduct._id);
   };
   return (
     <div className="shop-container container">
       <div className="product-container">
         {products.map((product) => (
           <Product
-            key={product.id}
+            key={product._id}
             product={product}
             addToCardHandler={addToCardHandler}
           />

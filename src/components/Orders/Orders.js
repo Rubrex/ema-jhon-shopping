@@ -12,10 +12,10 @@ import "./Orders.css";
 const Orders = () => {
   const { initialCart } = useLoaderData();
   const [cart, setCart] = useState(initialCart);
-
   // Remove Cart Button Handler
   const handleRemoveItem = (id) => {
-    const remainingCart = cart.filter((product) => product.id !== id);
+    const remainingCart = cart.filter((product) => product._id !== id);
+    console.log(cart, id);
     setCart(remainingCart);
     removeFromDb(id);
   };
@@ -38,9 +38,9 @@ const Orders = () => {
         {cart.map((product) => {
           return (
             <ReviewItem
-              key={product.id}
+              key={product._id}
               product={product}
-              handleRemoveItem={handleRemoveItem}
+              handleRemoveItem={() => handleRemoveItem(product._id)}
             ></ReviewItem>
           );
         })}
