@@ -1,5 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Pagination } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { addToDb, getStoredCart } from "../../utilities/fakedb";
@@ -56,15 +57,25 @@ const Shop = () => {
   };
   return (
     <div className="shop-container container">
-      <div className="product-container">
-        {products.map((product) => (
-          <Product
-            key={product._id}
-            product={product}
-            addToCardHandler={addToCardHandler}
-          />
-        ))}
+      <div>
+        <div className="product-container">
+          {products.map((product) => (
+            <Product
+              key={product._id}
+              product={product}
+              addToCardHandler={addToCardHandler}
+            />
+          ))}
+        </div>
+        <Pagination
+          currentPage={1}
+          onPageChange={10}
+          showIcons={true}
+          totalPages={100}
+          className="bg-transparent my-10 text-center"
+        />
       </div>
+
       <div className="cart-container">
         <Cart cart={cart} setCart={setCart}>
           <div className="btn-group">
