@@ -1,20 +1,35 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Pagination } from "flowbite-react";
 import React, { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { addToDb, getStoredCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
 const Shop = () => {
-  const { products, totalProductsCount } = useLoaderData();
+  // const { products, totalProductsCount } = useLoaderData();
   // States
+  const [products, setProducts] = useState([]);
+  const [totalProductsCount, setTotalProductsCount] = useState(0);
   const [cart, setCart] = useState([]);
   const [showPageSize, setShowPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
   const pages = Math.ceil(totalProductsCount / showPageSize);
+
+  // UseEffect
+  useEffect(() => {
+    const url = `http://localhost:5000/products?page=${
+      currentPage - 1
+    }&size=${showPageSize}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data.products);
+        setTotalProductsCount(data.totalProductsCount);
+      });
+  }, [currentPage, showPageSize]);
+
   // Get data from local storage
   useEffect(() => {
     const storedCart = getStoredCart();
@@ -92,15 +107,14 @@ const Shop = () => {
             {[...Array(pages).keys()].map((elem) => {
               return (
                 <li>
-                  <Link
-                    to="/"
+                  <button
                     onClick={() => setCurrentPage(elem + 1)}
                     className={`${
                       elem + 1 === currentPage && "bg-blue-400 text-white"
                     } py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
                   >
                     {elem + 1}
-                  </Link>
+                  </button>
                 </li>
               );
             })}
